@@ -15,10 +15,11 @@ class _LocationInMapState extends State<LocationInMap> {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
+      
       initialCameraPosition: CameraPosition(target: LatLng(
         widget.place['latitude'],
         widget.place['longitude'],
-      )),
+      ),zoom: 14),
       myLocationButtonEnabled: false,
       markers: {
         Marker(

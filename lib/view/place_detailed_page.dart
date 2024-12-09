@@ -131,12 +131,79 @@ class _PlaceDetailedScreenState extends State<PlaceDetailedScreen> {
                     width: size.width,
                     child: LocationInMap(place: widget.place),
                   ),
-                  const SizedBox(height: 100,)
+                  const SizedBox(
+                    height: 100,
+                  )
                 ],
               ),
             ),
           ],
         ),
+      ),
+      bottomSheet: priceAndReserve(size),
+    );
+  }
+
+  Container priceAndReserve(Size size) {
+    return Container(
+      height: size.height * 0.1,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.black12),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RichText(
+                text: TextSpan(
+                    text: "\$${widget.place['price']}",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 18),
+                    children: [
+                      TextSpan(
+                        text: "night",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ]),
+              ),
+              Text(
+                widget.place['date'],
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            width: size.width * 0.3,
+           
+          ),
+           Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 35,
+              vertical: 15,
+            ),
+            decoration: BoxDecoration(
+                color: Colors.pink, borderRadius: BorderRadius.circular(15)),
+            child: const Text(
+              "Reserve",
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
       ),
     );
   }
