@@ -44,6 +44,7 @@ dependencies:
   another_carousel_pro: ^1.0.2
   google_maps_flutter: ^2.10.0
   custom_info_window: ^1.0.1
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

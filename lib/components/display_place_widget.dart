@@ -1,3 +1,4 @@
+import 'package:airbnb/provider/favorite_provider.dart';
 import 'package:airbnb/view/place_detailed_page.dart';
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,6 +18,7 @@ class _DisplayPlaceWidgetState extends State<DisplayPlaceWidget> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final provider = FavoriteProvider.of(context);
     return StreamBuilder(
         stream: placeCollection.snapshots(),
         builder: (context, streamSnapshot) {
@@ -41,10 +43,11 @@ class _DisplayPlaceWidgetState extends State<DisplayPlaceWidget> {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) =>
-                                    PlaceDetailedScreen(place: place),),);
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => PlaceDetailScreen(place: place),
+                          ),
+                        );
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,11 +109,14 @@ class _DisplayPlaceWidgetState extends State<DisplayPlaceWidget> {
                                           color: Colors.white,
                                         ),
                                         InkWell(
-                                          onTap: () {},
+                                          onTap: () {
+                                            provider.toggleFavorite(place);
+                                          },
                                           child: Icon(
                                             Icons.favorite,
                                             size: 30,
-                                            color: Colors.red,
+                                            color: provider.isExist(place)?
+                                             Colors.red : Colors.transparent,
                                           ),
                                         ),
                                       ],
