@@ -1,4 +1,5 @@
 import 'package:airbnb/view/explore_page.dart';
+import 'package:airbnb/view/wishlist_page.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
   void initState() {
     page = [
   const ExploreScrren(),
-      const Scaffold(body: Center(child: Text("Wishlist Page"))),
+   const WishlistScreen(),
       const Scaffold(body: Center(child: Text("Trip Page"))),
       const Scaffold(body: Center(child: Text("Messages Page"))),
       const Scaffold(body: Center(child: Text("Profile Page"))),
