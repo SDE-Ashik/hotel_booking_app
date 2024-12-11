@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'airbnb-f7ede',
     storageBucket: 'airbnb-f7ede.firebasestorage.app',
   );
+
 }
